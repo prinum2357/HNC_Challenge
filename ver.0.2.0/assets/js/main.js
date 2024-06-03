@@ -1,5 +1,3 @@
-const MAXSAFEINTEGER = 9007199254740991;
-
 let DATASET = "";
 let CURPROBLEM = "";
 
@@ -15,32 +13,24 @@ let CORRECT_COUNT = 0;
 let INCORRECT_COUNT = 0;
 let GIVE_UP_COUNT = 0;
 
-let isPrimeFactor = true;
-
-let inputValueC = document.getElementById("inputValueC");
-let inputValueP = document.getElementById("inputValueP");
-let inputValueX = document.getElementById("inputValueX");
-
-const primeFactor = document.getElementById("PrimeFactor");
-const checkBox2x = document.getElementById("2xCheckBox");
-const checkBox3x = document.getElementById("3xCheckBox");
-const checkBox5x = document.getElementById("5xCheckBox");
-const checkBox7x = document.getElementById("7xCheckBox");
-const checkBox11x = document.getElementById("11xCheckBox");
-const checkBox13x = document.getElementById("13xCheckBox");
+const checkBox2x = document.getElementById("2xCheckBox")
+const checkBox3x = document.getElementById("3xCheckBox")
+const checkBox5x = document.getElementById("5xCheckBox")
+const checkBox7x = document.getElementById("7xCheckBox")
 const buttonStart = document.getElementById("buttonStart");
 const tableJundgeLog = document.getElementById("tableJudgeLog");
 const tbodyJundgeLog = document.getElementById("tbodyJudgeLog");
+const inputValueC = document.getElementById("inputValueC");
+const inputValueP = document.getElementById("inputValueP");
+const inputValueX = document.getElementById("inputValueX");
 const buttonReset = document.getElementById("buttonReset");
 const buttonJudge = document.getElementById("buttonJudge");
 const buttonGiveUp = document.getElementById("buttonGiveUp");
 
-const FILEPATH2x = "./assets/data/2x";
-const FILEPATH3x = "./assets/data/3x";
-const FILEPATH5x = "./assets/data/5x";
-const FILEPATH7x = "./assets/data/7x";
-const FILEPATH11x = "./assets/data/11x";
-const FILEPATH13x = "./assets/data/13x";
+let FILEPATH2x = "./assets/data/2x"
+let FILEPATH3x = "./assets/data/3x"
+let FILEPATH5x = "./assets/data/5x"
+let FILEPATH7x = "./assets/data/7x"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -51,20 +41,14 @@ function clearTable() {
 }
 
 function resetData() {
-    DATASET = "";
+    DATASET = ""
 }
 
 // 問題のロード
 const loadData = (async() => {
 
-    if(PrimeFactor.checked) {
-        isPrimeFactor = true;
 
-    } else {
-        isPrimeFactor = false;
-    }
-
-    let _data = "";
+    let _data = ""
 
     if(checkBox2x.checked) {
         let responce = await fetch(FILEPATH2x);
@@ -90,20 +74,8 @@ const loadData = (async() => {
 
     }
 
-    if(checkBox11x.checked) {
-        let responce = await fetch(FILEPATH11x);
-        _data += (await responce.text()).replaceAll("\r", "");
-
-    }
-
-    if(checkBox13x.checked) {
-        let responce = await fetch(FILEPATH13x);
-        _data += (await responce.text()).replaceAll("\r", "");
-
-    }
-
-    _data = _data.split("\n");
-    _data.pop();
+    _data = _data.split("\n")
+    _data.pop()
 
     DATASET = _data;
 
@@ -125,7 +97,7 @@ function resetInput() {
     buttonJudge.disabled = true;
 
     // inputValueCにフォーカス
-    inputValueC.focus();
+    inputValueC.focus()
 }
 
 //　問題の生成
@@ -158,17 +130,17 @@ function getTime(type) {
             START_TIME = START_TIME.toFixed(3);
             break;
 
-            case "CUR_TIME" :
-                CUR_TIME = new Date();
-                CUR_TIME = CUR_TIME.getTime() / 1000;
-                CUR_TIME = CUR_TIME.toFixed(3);
-                break;
-            }
-        }
+        case "CUR_TIME" :
+            CUR_TIME = new Date();
+            CUR_TIME = CUR_TIME.getTime() / 1000;
+            CUR_TIME = CUR_TIME.toFixed(3);
+            break;
+    }
+}
 
-        // 入力チェック
-        function checkInput() {
-            let inputArray = [];
+// 入力チェック
+function checkInput() {
+    let inputArray = [];
     let curProblemArray = CURPROBLEM.toUpperCase().split('').sort().join('');
 
     inputArray = inputArray.concat(VALUE_C.split(''));
@@ -191,10 +163,10 @@ function getTime(type) {
 
         document.onkeydown = function (e) {
             if (e.key === 'Enter') {
-                buttonJudge.click();
-                inputValueC.blur();
-                inputValueP.blur();
-                inputValueX.blur();
+                buttonJudge.click()
+                inputValueC.blur()
+                inputValueP.blur()
+                inputValueX.blur()
             }
         }
 
@@ -211,24 +183,18 @@ function judgeEquation() {
     let _p = card2Num(VALUE_P);
     let _x = card2Num(VALUE_X);
 
-    if(isPrimeFactor) {
-        if(_c == _p*_x && isPrime(_x) && isPrime(_p)) {
-            return "correct";
-
-        } else {
-            return "incorrect";
-
-        }
+    if(_c == _p*_x) {
+        return "correct";
 
     } else {
-        if(_c == _p*_x) {
-            return "correct";
+        return "incorrect";
 
-        } else {
-            return "incorrect";
-
-        }
     }
+}
+
+// カードから数を生成
+function card2Num(card) {
+    return Number(card.replaceAll('A', '1').replaceAll('T', '10').replaceAll('J', '11').replaceAll('Q', '12').replaceAll('K', '13'));
 }
 
 // テーブル追加
@@ -283,8 +249,8 @@ function addTable(correctFlag) {
             genPloblem();
             break;
 
-            case "incorrect" :
-                row.classList.add("table-danger");
+        case "incorrect" :
+            row.classList.add("table-danger");
 
             cell1.appendChild(document.createTextNode(VALUE_C+" = "+VALUE_P+" × "+VALUE_X));
             cell1.classList.add("tablebody-text");
@@ -306,15 +272,15 @@ function addTable(correctFlag) {
 
             break;
 
-            case "giveup" :
-                row.classList.add("table-danger");
+        case "giveup" :
+            row.classList.add("table-danger");
 
-                cell1.appendChild(document.createTextNode(""));
+            cell1.appendChild(document.createTextNode(""));
 
-                cell2.appendChild(document.createTextNode("GiveUp"));
-                cell2.classList.add("fs-5");
+            cell2.appendChild(document.createTextNode("GiveUp"));
+            cell2.classList.add("fs-5");
 
-                cell5.appendChild(document.createTextNode(CORRECT_COUNT));
+            cell5.appendChild(document.createTextNode(CORRECT_COUNT));
             cell5.classList.add("fs-5");
 
             cell6.appendChild(document.createTextNode(INCORRECT_COUNT));
@@ -325,79 +291,11 @@ function addTable(correctFlag) {
             cell7.classList.add("fs-5");
 
             break;
-        }
-    }
-
-    function resetScore() {
-        CORRECT_COUNT = 0;
-        INCORRECT_COUNT = 0;
-    GIVE_UP_COUNT = 0;
-}
-
-function autoReplace(inputValue) {
-    return inputValue.replaceAll('1', 'A').toUpperCase();
-}
-
-////////////////////////////////////////////////////////////////////////////////
-
-// isPrime
-function isPrime(n) {
-    if(n == 2n) {
-        return true;
-    }
-
-    if(n <= 1n || n % 2n == 0) {
-        return false;
-    }
-
-    let d = n - 1n;
-    let s = 0n;
-
-    while(d % 2n != 0) {
-        d /= 2n;
-        s += 1n
-    }
-
-    let safeInteger = MAXSAFEINTEGER;
-    if (n < MAXSAFEINTEGER) {
-        safeInteger = Number(n);
-    }
-
-    for(var i = 0; i < 50; i++) {
-        let a = BigInt(Math.floor(Math.random() * safeInteger));
-
-        if(modPow(a, d, n) == 1n) {
-            return true;
-        }
-
-        for(var j = 0; j < s; j++) {
-            if (modPow(a, modPow(2n, j, n) * d, n) == n - 1n) {
-                return true;
-            }
-        }
-        return false;
     }
 }
 
-// card2bigInt
-function card2bigInt(card) {
-    card = card.replaceAll('A', '1')
-               .replaceAll('T', '10')
-               .replaceAll('J', '11')
-               .replaceAll('Q', '12')
-               .replaceAll('K', '13')
-               .replaceAll('a', '1')
-               .replaceAll('t', '10')
-               .replaceAll('j', '11')
-               .replaceAll('q', '12')
-               .replaceAll('k', '13')
+function runTwice() {
 
-    return BigInt(card)
-}
-
-// カードから数を生成
-function card2Num(card) {
-    return Number(card.replaceAll('A', '1').replaceAll('T', '10').replaceAll('J', '11').replaceAll('Q', '12').replaceAll('K', '13'));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -409,7 +307,6 @@ buttonStart.onclick = () => {
     genPloblem();
     genPloblem();
     resetInput();
-    resetScore();
     buttonGiveUp.disabled = false;
     getTime("START_TIME");
     LAP_START_TIME = START_TIME;
@@ -437,32 +334,22 @@ checkBox7x.addEventListener("change", (event) => {
 
 });
 
-checkBox11x.addEventListener("change", (event) => {
-    loadData();
-
-});
-
-checkBox13x.addEventListener("change", (event) => {
-    loadData();
-
-});
-
 
 // 判定可能チェック
 inputValueC.addEventListener("input", (event) => {
-    VALUE_C = inputValueC.value.replaceAll('1', 'A').toUpperCase();
+    VALUE_C = inputValueC.value.toUpperCase();
     checkInput();
 
 });
 
 inputValueP.addEventListener("input", (event) => {
-    VALUE_P = inputValueP.value.replaceAll('1', 'A').toUpperCase();
+    VALUE_P = inputValueP.value.toUpperCase();
     checkInput();
 
 });
 
 inputValueX.addEventListener("input", (event) => {
-    VALUE_X = inputValueX.value.replaceAll('1', 'A').toUpperCase();
+    VALUE_X = inputValueX.value.toUpperCase();
     checkInput();
 
 });
@@ -507,6 +394,7 @@ document.onkeyup = function (e) {
 function main() {
     loadData();
     loadData();
+
 
 }
 
