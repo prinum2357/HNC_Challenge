@@ -41,11 +41,11 @@ td {
 }
 
 #tableRow0, #tableRow1 {
-    width: 20%;
+    width: 40%;
 }
 
-#tableRow2, #tableRow3, #tableRow4, #tableRow5, #tableRow6 {
-    width: 10%;
+#tableRow2 {
+    width: 20%;
 }
 
 #inputArea {

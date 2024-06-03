@@ -18,27 +18,27 @@
                 <h1 id="title">HNC Challenge</h1>
             </div>
             <div class="col-3">
-                <div class="row">
+                <div class="row bg-light">
                     <div class="col-3 d-flex">
-                        <div class="d-flex align-items-center justify-content-center">Option</div>
+                        <div class="d-flex align-items-center justify-content-center">Option<br>(nullity)</div>
                     </div>
                     <div class="col-2 offset-1">
-                        <input class="form-check-input" type="checkbox" value="2x" id="2xCheckBox" checked>
+                        <input class="form-check-input" type="checkbox" value="2x" id="2xCheckBox" checked disabled>
                             2x
                         </input>
                     </div>
                     <div class="col-2">
-                        <input class="form-check-input" type="checkbox" value="3x" id="3xCheckBox">
+                        <input class="form-check-input" type="checkbox" value="3x" id="2xCheckBox" disabled>
                             3x
                         </input>
                     </div>
                     <div class="col-2">
-                        <input class="form-check-input" type="checkbox" value="5x" id="5xCheckBox">
+                        <input class="form-check-input" type="checkbox" value="5x" id="2xCheckBox" disabled>
                             5x
                         </input>
                     </div>
                     <div class="col-2">
-                        <input class="form-check-input" type="checkbox" value="7x" id="7xCheckBox">
+                        <input class="form-check-input" type="checkbox" value="7x" id="2xCheckBox" disabled>
                             7x
                         </input>
                     </div>
@@ -61,11 +61,6 @@
                                 <th class="fs-5" id="tableRow0">Hand</th>
                                 <th class="fs-5" id="tableRow1">Equation</th>
                                 <th class="fs-5" id="tableRow2">Judge</th>
-                                <th class="fs-5" id="tableRow3">LapTime</th>
-                                <th class="fs-5" id="tableRow3">TotalTime</th>
-                                <th class="fs-5" id="tableRow4">Correct</th>
-                                <th class="fs-5" id="tableRow5">Incorrect</th>
-                                <th class="fs-5" id="tableRow6">GiveUp</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyJudgeLog">
@@ -118,7 +113,7 @@
         </div>
 
         <div class="row localEquation">
-            <div class="col-3 d-flex">
+            <div class="col-4 d-flex">
                 <input class="form-control text-center localInput" maxlength="5" disabled id="inputValueC"></input>
             </div>
             <div class="col-1 d-flex align-items-center justify-content-center">
@@ -130,17 +125,11 @@
             <div class="col-1 d-flex align-items-center justify-content-center">
                 <div class="text-center fs-1">×</div>
             </div>
-            <div class="col-3 d-flex">
+            <div class="col-4 d-flex">
                 <input class="form-control text-center localInput" maxlength="5" disabled id="inputValueX"></input>
             </div>
             <div class="col-1 d-flex">
-                <button class="btn btn-secondary form-control" type="button" disabled id="buttonReset">Reset</button>
-            </div>
-            <div class="col-1 d-flex">
-                <button class="btn btn-primary form-control" type="button" disabled id="buttonJudge">Judge<br>(Enter)</button>
-            </div>
-            <div class="col-1 d-flex">
-                <button class="btn btn-danger form-control" type="button" disabled id="buttonGiveUp">GiveUp</button>
+                <button class="btn btn-primary form-control" type="button" disabled id="buttonJudge">Judge</button>
             </div>
         </div>
     </div>
@@ -152,7 +141,7 @@
                 Original Idea <a href="https://twitter.com/irotirihs/status/1757047519719366997">にばいめーかー</a> by <a href="https://twitter.com/irotirihs">さしみ</a>
             </div>
             <div class="col-2 text-center" id="version">
-                ver. 0.2.0
+                ver. 0.1.0
             </div>
             <div class="col-5  text-end" id="credit">
                 Created by <a href="https://twitter.com/prinum2357">Hanabusan</a>
@@ -162,6 +151,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="assets/js/main.js"></script>
+    <!-- <script type="module" src="assets/js/primeqk.js"></script> -->
+    <!-- <script type="module" src="assets/js/table.js"></script> -->
 
 </body>
 
