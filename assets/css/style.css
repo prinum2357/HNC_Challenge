@@ -1,0 +1,73 @@
+/* PUBLIC */
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.row {
+    padding: 3px;
+}
+
+#headerArea {
+    height: 10vh;
+}
+
+#judgeLogArea {
+    height: 50vh;
+}
+
+.tableFrame {
+    height: 48vh;
+    overflow: auto;
+    }
+
+.table thead th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+.tablebody-text {
+    text-align: center; 
+}
+
+#tableRow0, #tableRow1 {
+    width: 40%;
+}
+
+#tableRow2 {
+    width: 20%;
+}
+
+#inputArea {
+    height: 35vh;
+}
+
+.localCard {
+    height: 20vh;
+}
+
+.localEquation {
+    height: 10vh;
+}
+
+.localInput {
+    font-size: 8vh;
+}
+
+#footerArea {
+    height: 5vh;
+}
+
+#credit {
+    text-align: left;
+}
