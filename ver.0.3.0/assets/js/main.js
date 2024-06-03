@@ -339,20 +339,6 @@ function autoReplace(inputValue) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// modPow
-export function modPow(a, n, mod) {
-    let result = 1n;
-    while(n > 0) {
-        if(n & 1n) {
-            result = (result * a) % mod
-        }
-
-        a = (a * a) % mod;
-        n >>= 1n
-    }
-
-    return result;
-}
 
 // isPrime
 function isPrime(n) {
@@ -411,7 +397,7 @@ function card2bigInt(card) {
 
 // カードから数を生成
 function card2Num(card) {
-    return BigInt(card.replaceAll('A', '1').replaceAll('T', '10').replaceAll('J', '11').replaceAll('Q', '12').replaceAll('K', '13'));
+    return Number(card.replaceAll('A', '1').replaceAll('T', '10').replaceAll('J', '11').replaceAll('Q', '12').replaceAll('K', '13'));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
